@@ -1,5 +1,5 @@
 import Order from "../models/Orderr.js";
-import Product from "../models/Product.js";
+import Product from "../models/product.js";
 import Stripe from "stripe";
 
 // Place Order COD : /api/order/cod
