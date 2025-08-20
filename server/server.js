@@ -19,13 +19,28 @@ const port = process.env.PORT || 4000;
 await connectDB();
 connectCloudinary();
 
-// Allow multiple origins
-const allowedOrigins = ['http://localhost:5173','https://fresh-kart-eight.vercel.app','https://fresh-kart-seven.vercel.app'];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://fresh-kart-eight.vercel.app",
+  "https://fresh-kart-seven.vercel.app"
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
+
 
 // Middleware configuration
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: allowedOrigins, credentials: true }));
+// app.use(cors({ origin: allowedOrigins, credentials: true }));
 
 // Routes
 app.get('/', (req, res) => res.send("API is Working"));
