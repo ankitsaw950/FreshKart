@@ -1,6 +1,7 @@
 import Address from "../models/Address.js";
 
 // Add Address : /api/address/add
+
 export const addAddress = async (req, res) => {
     try {
         const { address} = req.body;
@@ -25,3 +26,6 @@ export const getAddress = async (req, res) => {
         res.json({ success: false, message: error.message });
     }
 };
+
+
+//  kndfg
